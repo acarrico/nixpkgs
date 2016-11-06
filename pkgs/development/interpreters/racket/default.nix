@@ -4,6 +4,7 @@
 , libtool, mpfr, openssl, pango, poppler
 , readline, sqlite
 , disableDocs ? true
+, extraLibs ? []
 }:
 
 let
@@ -12,7 +13,7 @@ let
     fontDirectories = [ freefont_ttf ];
   };
 
-  libPath = stdenv.lib.makeLibraryPath [
+  libPath = stdenv.lib.makeLibraryPath ([
     cairo
     fontconfig
     glib
@@ -26,7 +27,7 @@ let
     poppler
     readline
     sqlite
-  ];
+  ] ++ extraLibs);
 
 in
 

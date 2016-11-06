@@ -5561,6 +5561,7 @@ in
   pyrex096 = callPackage ../development/interpreters/pyrex/0.9.6.nix { };
 
   racket = callPackage ../development/interpreters/racket { };
+  racket-gl = callPackage ../development/interpreters/racket { extraLibs = [mesa]; };
 
   rakudo = callPackage ../development/interpreters/rakudo {
     inherit (darwin.apple_sdk.frameworks) CoreServices ApplicationServices;
