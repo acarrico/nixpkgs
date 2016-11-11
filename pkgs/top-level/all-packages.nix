@@ -5562,6 +5562,7 @@ in
 
   racket = callPackage ../development/interpreters/racket { };
   racket-gl = callPackage ../development/interpreters/racket { extraLibs = [mesa]; };
+  racket-gl-6-5 = callPackage ../development/interpreters/racket { extraLibs = [mesa]; version = "6.5"; };
 
   rakudo = callPackage ../development/interpreters/rakudo {
     inherit (darwin.apple_sdk.frameworks) CoreServices ApplicationServices;

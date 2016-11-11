@@ -4,6 +4,7 @@
 , libtool, mpfr, openssl, pango, poppler
 , readline, sqlite
 , disableDocs ? true
+, version ? "6.7"
 , extraLibs ? []
 }:
 
@@ -29,15 +30,20 @@ let
     sqlite
   ] ++ extraLibs);
 
+  sha256s = {
+    "6.5" = "0gvh7i5k87mg1gpqk8gaq50ja9ksbhnvdqn7qqh0n17byidd6999";
+    "6.6" = "1kzdi1n6h6hmz8zd9k8r5a5yp2ryi4w3c2fjm1k6cqicn18cwaxz";
+    "6.7" = "0v1nz07vzz0c7rwyz15kbagpl4l42n871vbwij4wrbk2lx22ksgy"; };
+  
 in
 
 stdenv.mkDerivation rec {
   name = "racket-${version}";
-  version = "6.6";
+  inherit version;
 
   src = fetchurl {
     url = "http://mirror.racket-lang.org/installers/${version}/${name}-src.tgz";
-    sha256 = "1kzdi1n6h6hmz8zd9k8r5a5yp2ryi4w3c2fjm1k6cqicn18cwaxz";
+    sha256 = sha256s."${version}";
   };
 
   FONTCONFIG_FILE = fontsConf;
